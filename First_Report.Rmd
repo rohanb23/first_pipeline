@@ -1,0 +1,111 @@
+---
+title: "First Report"
+author: "Rohan Bhattacharya"
+date: "2025-03-28"
+output: html_document
+---
+---
+title: "Monthly Monitoring Information Data Report"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+library(targets)
+library(ggplot2)
+library(purrr)
+library(dplyr)
+
+# Load targets output
+tar_load(aggregate_data)  # Load aggregated data
+tar_load(summary_values)
+tar_load(summary_trends)
+tar_load(stacked_charts)
+
+```
+
+
+
+
+
+```{r generate_vars, include = FALSE}
+
+# SEC 1 - INTRO 
+
+  
+# Extract the latest date from any dataframe in the list
+latest_date <- max(purrr::map_dbl(aggregate_data, ~ max(.x$Period_End, na.rm = TRUE)))
+period_commences_on_date <- latest_date - 27
+
+# Format the date as "DD MMM"
+latest_date_formatted <- format(as.Date(latest_date, origin="1970-01-01"), "%d %b")
+period_commences_on_date_formatted <- format(as.Date(period_commences_on_date, origin="1970-01-01"), "%d %b")
+
+
+# SEC 2 - SUMMARY 
+
+# FURTHER DETAILS
+# Extract the dataframe from the list
+df_apps <- aggregate_data[["DHSC Care worker Apps"]]
+df_grants <- aggregate_data[["DHSC Care worker Grants"]]
+
+# Get the last observed (non-missing) values
+last_in_country_apps <- tail(na.omit(df_apps$`Total...In.Country`), 1)
+last_total_apps <- tail(na.omit(df_apps$Total), 1)
+
+last_in_country_grants <- tail(na.omit(df_grants$`Total...In.Country`), 1)
+last_total_grants <- tail(na.omit(df_grants$Total), 1)
+
+# Calculate ratios as percentages
+pct_in_country_apps <- round((last_in_country_apps / last_total_apps) * 100, 0)
+pct_in_country_grants <- round((last_in_country_grants / last_total_grants) * 100, 0)
+
+# Print results
+list(
+  "In Country (%)" = pct_in_country_apps,
+  "Out of Country (%)" = pct_in_country_grants
+)
+
+```
+
+The latest release covers the four-week period from `r period_commences_on_date_formatted` to `r latest_date_formatted`.
+
+# Summary
+
+* Out-of-country applications have `r summary_trends[["Apps - Out of Country"]][["trend_recent_vs_penultimate"]]`  in the most recent period, albeit from a low base. Out of country applications have `r summary_trends[["Apps - Out of Country"]][["trend_recent_vs_penultimate"]]` to `r summary_values[["Apps - Out of Country - Recent"]]`, a change of `r summary_trends[["Apps - Out of Country"]][["pct_change_recent_vs_penultimate"]]`%.
+
+* In the previous period, out-of-country applications `r summary_trends[["Apps - Out of Country"]][["trend_penultimate_vs_third_to_last"]]` by `r summary_trends[["Apps - Out of Country"]][["pct_change_penultimate_vs_third_to_last"]]`%. Levels remain very considerably below their peak of 14,100 in August 2023.
+
+* In-country applications have `r summary_trends[["Apps - In Country"]][["trend_recent_vs_penultimate"]]` by `r summary_trends[["Apps - In Country"]][["pct_change_recent_vs_penultimate"]]`% to `r summary_values[["Apps - In Country - Recent"]]` in the most recent four-week period, following a `r summary_trends[["Apps - In Country"]][["trend_penultimate_vs_third_to_last"]]` of `r summary_trends[["Apps - In Country"]][["pct_change_recent_vs_penultimate"]]`% in the previous period.
+* Prior to the latest period, in-country applications had been consistently rising since they were recorded at a low of 3,400 in April 2024. In-country applications remain significantly above their April 2024 level.
+
+```{r display_plots}
+
+# Print each plot explicitly
+print(stacked_charts$apps_plot)
+
+# Print the "Grants" stacked chart
+print(stacked_charts$grants_plot)
+```
+
+# Context
+
+A.  Senior Care Workers were added to the SOL on 4 March 2021, whilst Care Workers were added to the SOL on 15 February 2022. The monthly number of visa applications for main applicant care worker and senior care workers gradually increased from this date, reaching a level of around 10,000 main applicant out-of-country applications between February 23 and October 23. 
+
+B.	Out-of-country applications have reduced from a peak of 14,100 in August 2023, and reached a low of around 400 applications in April 2024. Changes to the application of the Genuine Vacancies Test implemented in October 23 have contributed to a collapse in applications. Following this trough, there was a temporary increase in out-of-country applications, which increased in four consecutive periods between May and October (from c400 to c800). DAS recommendation for out-of-country applications might have contributed to this upward trend. 
+
+C.	Trends in-country applications have been driven by policy changes, such as the move to restrict dependents from joining main applicant care workers in March 2024, amongst other factors. After reaching a peak of around 6,800 in March 2024, in-country applications fell to 3,400 in April 2024 and have since increased gradually from this level. 
+
+# Further details
+
+## Applications
+Visa applications data are a good indication of the latest trends as they do not mask lagged activity (unlike monthly visa grants data, which can reflect the outcomes of applications made in previous months). 
+
+In-country applications remain the main source of total applications, accounting for `r pct_in_country_apps`% of all applications in the latest four-week period. 
+
+## Grants
+
+Similar to visa applications, in-country grants remain the main source of total visa grants, accounting for `r pct_in_country_grants`% of all grants in the latest period. 
+
+In-country visa grants have increased in recent months: in the most recent four-week period, in-country visa grants `r summary_trends[["Grants - In Country"]][["trend_recent_vs_penultimate"]]` slightly by `r summary_trends[["Grants - In Country"]][["pct_change_recent_vs_penultimate"]]`% to around `r summary_values[["Grants - In Country - Recent"]]`. This follows a `r summary_trends[["Grants - In Country"]][["trend_penultimate_vs_third_to_last"]]` by `r summary_trends[["Grants - In Country"]][["pct_change_penultimate_vs_third_to_last"]]`% in the previous period.
+
+Out-of-country visa grants have `r summary_trends[["Grants - Out of Country"]][["trend_recent_vs_penultimate"]]` by  `r summary_trends[["Grants - Out of Country"]][["pct_change_recent_vs_penultimate"]]`% (from around `r summary_values[["Grants - Out of Country - Penultimate"]]` to  `r summary_values[["Grants - Out of Country - Recent"]]` in the latest four-week period. The general trend in recent months has been downward. 
