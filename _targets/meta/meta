@@ -16,7 +16,6 @@ clean_my_data|function|2a4e864dd34a4d39|||||||||||||||
 aggregate_four_weeks|function|e0c93a7ef01f6584|||||||||||||||
 clean_and_aggregate_data|function|c8a3ecbca9a6d2bf|||||||||||||||
 qa_report|stem|b3fe9ab4d06d9ace|07dc73b13d712b13|e809b1df677d5456|1335718456||t20195.5175420758s||658|rds|local|vector|||0.21||object cleaned_data not found
-aggregate_data|stem|3bb9ba466c2ebf38|662634a59812d58a|5bc0b982dd305bef|-1076934276||t20195.608859372s|s2664b|2664|rds|local|vector|||2.86|There was 1 warning in summarise.ℹ In argument acrosswhereis.numeric, sum, na.rm  TRUE.ℹ In group 1 Period_End  20220227.Caused by warning The ... argument of across is deprecated as of dplyr 1.1.0.Supply arguments directly to .fns through an anonymous function instead.   Previously  acrossab, mean, na.rm  TRUE   Now  acrossab, \x meanx, na.rm  TRUE|
 Calculate_summary_values|function|d5cca29061eb10ef|||||||||||||||
 key_stats|stem|f513b12ee6e122af|65fd8251121b6e8e|65f3dbd3c1e93691|-568234941||t20195.7095587383s|s383b|383|rds|local|vector|||0.1||
 check_trend|function|eab8e3ff584efbcb|||||||||||||||
@@ -25,19 +24,20 @@ create_trends|function|d43c52b80bb03565|||||||||||||||
 calculate_summary_values|function|ce9856817082682c|||||||||||||||
 calculate_trends|function|57f83621ecd84903|||||||||||||||
 quality_assurance_report|function|8153be8c2447876c|||||||||||||||
-data_list|stem|2dd29e126b5afcbb|679857e072c3a45e|f56a2f27a218c46a|2033452966||t20214.4368890698s|s8229b|8229|rds|local|vector|||1.57||
-stacked_charts|stem|4b96db5ac3538612|f0b1e2032a7cb86c|a592171f486f0a01|-359406398||t20214.4650995224s|s176913b|176913|rds|local|vector|||0.24||
-filepath|object|80d28b58ca35c374
+data_list|stem|38ac54472cd1334f|679857e072c3a45e|f943e8e347c0dca9|2033452966||t20214.5602470119s|s8437b|8437|rds|local|vector|||1.91||
+aggregate_data|stem|ef01300bb666454a|662634a59812d58a|5d39b844ac8549e1|-1076934276||t20214.5602713211s|s2724b|2724|rds|local|vector|||1.85|[1m[22mThere was 1 warning in `summarise()`. [1m[22m[36mℹ[39m In argument: `across(where(is.numeric), sum, na.rm = TRUE)`. [36mℹ[39m In group 1: `Period_End = 2022-02-27`. Caused by warning: [1m[22m[33m![39m The `...` argument of `across()` is deprecated as of dplyr 1.1.0. Supply arguments directly to `.fns` through an anonymous function instead.    # Previously   across(a:b, mean, na.rm = TRUE)    # Now   across(a:b, \(x) mean(x, na.rm = TRUE))|
+summary_values|stem|fa0080066d27e78d|585b70a684fc62d1|b9ad4e89440036e3|1333039727||t20214.5602764051s|s245b|245|rds|local|vector|||0.14||
+summary_trends|stem|6ade986cb6068d46|cf79307d59ae6110|286bcba7ea13fbc9|-2071191303||t20214.5602851004s|s271b|271|rds|local|vector|||0.06||
+filepath|object|aaf55bfb10c95e30
 read_my_data|function|7dcb862ef151fb1e
 clean_data|function|c8a3ecbca9a6d2bf
-dates|object|eba33cf04957fda5
-files|object|80d28b58ca35c374
+dates|object|3e96852e7f36111e
+files|object|211586d781dd6451
 calculate_summary_trends|function|5f636ff3f22f84de
 calculate_values|function|31e32de4914e1054
 data_folder|object|4be30b30c73c6df3
 prepare_stacked_chart_data|function|8d013e3bc6598b2e
-latest_file|object|80d28b58ca35c374
+latest_file|object|aaf55bfb10c95e30
 username|object|d84780c7c424d469
-generate_stacked_charts|function|a886025fa1ff2bca
-summary_values|stem|600cf552f5edf32d|585b70a684fc62d1|a95d58a93ea75474|1333039727||t20214.4677563532s|s245b|245|rds|local|vector|||0.12||
-summary_trends|stem|79802ca6a3af9488|cf79307d59ae6110|e52ea8fd8c2b7430|-2071191303||t20214.4677577446s|s264b|264|rds|local|vector|||0.05||
+generate_stacked_charts|function|8a525b67ae337bd4
+stacked_charts|stem|7f3c3ebf35a607dc|f0b1e2032a7cb86c|1851755dfca884f0|-359406398||t20214.6329417601s|s197702b|197702|rds|local|vector|||0.46||
