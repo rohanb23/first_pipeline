@@ -7,4 +7,9 @@ data/
 
 *.html
 
-_targets/*
+_targets/
+renv/
+.Rprofile/
+First_Report.Rmd/
+renv.lock/
+
