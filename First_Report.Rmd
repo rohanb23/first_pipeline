@@ -75,7 +75,7 @@ The latest release covers the four-week period from `r period_commences_on_date_
 
 * In the previous period, out-of-country applications `r summary_trends[["Apps - Out of Country"]][["trend_penultimate_vs_third_to_last"]]` by `r summary_trends[["Apps - Out of Country"]][["pct_change_penultimate_vs_third_to_last"]]`%. Levels remain very considerably below their peak of 14,100 in August 2023.
 
-* In-country applications have `r summary_trends[["Apps - In Country"]][["trend_recent_vs_penultimate"]]` by `r summary_trends[["Apps - In Country"]][["pct_change_recent_vs_penultimate"]]`% to `r summary_values[["Apps - In Country - Recent"]]` in the most recent four-week period, following a `r summary_trends[["Apps - In Country"]][["trend_penultimate_vs_third_to_last"]]` of `r summary_trends[["Apps - In Country"]][["pct_change_recent_vs_penultimate"]]`% in the previous period.
+* In-country applications have `r summary_trends[["Apps - In Country"]][["trend_recent_vs_penultimate"]]` by `r summary_trends[["Apps - In Country"]][["pct_change_recent_vs_penultimate"]]`% to `r summary_values[["Apps - In Country - Recent"]]` in the most recent four-week period, following a `r summary_trends[["Apps - In Country"]][["trend_penultimate_vs_third_to_last"]]` of `r summary_trends[["Apps - In Country"]][["pct_change_penultimate_vs_third_to_last"]]`% in the previous period.
 * Prior to the latest period, in-country applications had been consistently rising since they were recorded at a low of 3,400 in April 2024. In-country applications remain significantly above their April 2024 level.
 
 ```{r display_plots}

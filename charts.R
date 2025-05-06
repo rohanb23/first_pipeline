@@ -56,7 +56,7 @@ generate_stacked_charts <- function(aggregate_data) {
     ) +
     ggplot2::labs(title = "Applications: In & Out of Country", x = "Period", y = "Total", fill = "Flow & Worker Type") +
     ggplot2::theme_minimal() +
-    ggplot2::theme(axis.text.x = ggplot2::element_text(angle = 45, hjust = 1))
+    ggplot2::theme(axis.text.x = ggplot2::element_text(angle = 90, hjust = 1))
 
   grants_dates <- sort(unique(grants_data$Period_End))
   grants_breaks <- apps_dates[seq(1, length(grants_dates), by = 2)]  # every 2nd date
@@ -67,9 +67,9 @@ generate_stacked_charts <- function(aggregate_data) {
       breaks = grants_breaks,
       date_labels = "%d %b %Y"
     ) +
-    ggplot2::labs(title = "Applications: In & Out of Country", x = "Period", y = "Total", fill = "Flow & Worker Type") +
+    ggplot2::labs(title = "Grants: In & Out of Country", x = "Period", y = "Total", fill = "Flow & Worker Type") +
     ggplot2::theme_minimal() +
-    ggplot2::theme(axis.text.x = ggplot2::element_text(angle = 45, hjust = 1))
+    ggplot2::theme(axis.text.x = ggplot2::element_text(angle = 90, hjust = 1))
 
   return(list(apps_plot = apps_plot, grants_plot = grants_plot))
 }

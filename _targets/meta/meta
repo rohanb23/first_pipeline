@@ -9,13 +9,11 @@ aggregate_data_15b48367016d9ac2|branch|e08f59617452b9fd|d83596478d6473de|506a02d
 aggregate_data_ec34ac92ffe366b2|branch|a2b78e0dfc51eabc|d83596478d6473de|506a02db2a45c5a0|1873873867||t20175.9038477952s|s1001b|1001|rds|local|vector|aggregate_data||0.36||
 aggregate_data_2ea988db307b1226|branch|639cbbd95c4b1081|d83596478d6473de|506a02db2a45c5a0|-1763370667||t20175.9038530761s|s968b|968|rds|local|vector|aggregate_data||0.39||
 plots|stem|1437bfe66b3b10f3|df4b7e472a5cbe32|a40d1d56aa638890|765790996||t20179.6281518845s|s195047b|195047|rds|local|vector|||0.14||
-stacked_charts|stem|3b3c515cb52ff441|f0b1e2032a7cb86c|dcbfd588e0d16101|-359406398||t20187.6019399208s|s176926b|176926|rds|local|vector|||0.36||
 trends_flat|stem|f513b12ee6e122af|65fd8251121b6e8e|bb3dde1aa84703fd|-2118899115||t20187.7144852306s|s383b|383|rds|local|vector|||0.13||
 plot_aggregated_data|function|e4bd983071daed92|||||||||||||||
 generate_plots|function|0eb75298d75c9380|||||||||||||||
 clean_my_data|function|2a4e864dd34a4d39|||||||||||||||
 aggregate_four_weeks|function|e0c93a7ef01f6584|||||||||||||||
-data_list|stem|2dd29e126b5afcbb|679857e072c3a45e|47ff8ab7cae28342|2033452966||t20195.5175210024s|s8229b|8229|rds|local|vector|||1.81||
 clean_and_aggregate_data|function|c8a3ecbca9a6d2bf|||||||||||||||
 qa_report|stem|b3fe9ab4d06d9ace|07dc73b13d712b13|e809b1df677d5456|1335718456||t20195.5175420758s||658|rds|local|vector|||0.21||object cleaned_data not found
 aggregate_data|stem|3bb9ba466c2ebf38|662634a59812d58a|5bc0b982dd305bef|-1076934276||t20195.608859372s|s2664b|2664|rds|local|vector|||2.86|There was 1 warning in summarise.ℹ In argument acrosswhereis.numeric, sum, na.rm  TRUE.ℹ In group 1 Period_End  20220227.Caused by warning The ... argument of across is deprecated as of dplyr 1.1.0.Supply arguments directly to .fns through an anonymous function instead.   Previously  acrossab, mean, na.rm  TRUE   Now  acrossab, \x meanx, na.rm  TRUE|
@@ -26,14 +24,20 @@ sum_trend_value|function|885c648767f9346e|||||||||||||||
 create_trends|function|d43c52b80bb03565|||||||||||||||
 calculate_summary_values|function|ce9856817082682c|||||||||||||||
 calculate_trends|function|57f83621ecd84903|||||||||||||||
-summary_trends|stem|7e3789b982dc7cb2|cf79307d59ae6110|a346be6cde19a3df|-2071191303||t20195.7211342546s|s261b|261|rds|local|vector|||0.06||
-summary_values|stem|290081e2d1d9d6e7|585b70a684fc62d1|4412d129b7a92e89|1333039727||t20195.7323720597s|s246b|246|rds|local|vector|||0.16||
-quality_assurance_report|function|8153be8c2447876c
-filepath|object|389dbb5844a8382e
+quality_assurance_report|function|8153be8c2447876c|||||||||||||||
+data_list|stem|2dd29e126b5afcbb|679857e072c3a45e|f56a2f27a218c46a|2033452966||t20214.4368890698s|s8229b|8229|rds|local|vector|||1.57||
+stacked_charts|stem|4b96db5ac3538612|f0b1e2032a7cb86c|a592171f486f0a01|-359406398||t20214.4650995224s|s176913b|176913|rds|local|vector|||0.24||
+filepath|object|80d28b58ca35c374
 read_my_data|function|7dcb862ef151fb1e
 clean_data|function|c8a3ecbca9a6d2bf
+dates|object|eba33cf04957fda5
+files|object|80d28b58ca35c374
 calculate_summary_trends|function|5f636ff3f22f84de
-calculate_values|function|5ac352eeba91c3b4
+calculate_values|function|31e32de4914e1054
+data_folder|object|4be30b30c73c6df3
 prepare_stacked_chart_data|function|8d013e3bc6598b2e
+latest_file|object|80d28b58ca35c374
 username|object|d84780c7c424d469
-generate_stacked_charts|function|1c4811301916a04c
+generate_stacked_charts|function|a886025fa1ff2bca
+summary_values|stem|600cf552f5edf32d|585b70a684fc62d1|a95d58a93ea75474|1333039727||t20214.4677563532s|s245b|245|rds|local|vector|||0.12||
+summary_trends|stem|79802ca6a3af9488|cf79307d59ae6110|e52ea8fd8c2b7430|-2071191303||t20214.4677577446s|s264b|264|rds|local|vector|||0.05||

@@ -68,10 +68,8 @@ clean_data <- function(data_list, start_date = "2022-02-28") {
   })
 }
 
-library(ggplot2)
-
 # SEC 2.2 FUNCTIONS TO PRODUCE KEY STATS KEEPING CARE/ SENIOR CARE WORKERS SPLIT FROM CLEANED DATA
-#CONTAINS 3 FUNCTIONS
+# CALCULATE_VALUES CONTAINS 3 FUNCTIONS
 # CHECK_TREND = IDENTIFIES VALUES WE WANT
 # CREATE_TREND = IDENTIFIES COLUMNS WE WANT
 # CALCULATE_TREND = A FUNCTION WHICH BINDS THE TWO FUNCTIONS ABOVE
@@ -151,6 +149,7 @@ calculate_values <- function(aggregate_data) {
     )
 
     names(results) <- labels
+    results <- round(results, -1)
     as.list(results)
   }
 

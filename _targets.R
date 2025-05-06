@@ -3,11 +3,21 @@ source("functions.R")
 source("charts.R")
 
 username <- Sys.getenv("USERNAME")
-filepath <- file.path(
+
+data_folder <- file.path(
   "C:/Users", username,
-  "OneDrive - Department of Health and Social Care/Git/first_pipeline/data",        #Change if neccesary
-  "2025-03-01-OFF-SENS-DHSC-SOC-6145&6146-Table.xlsx"                               #Change this line
+  "OneDrive - Department of Health and Social Care/Git/first_pipeline/data"                                                    #Change this line
 )
+
+# Match files starting with a date
+files <- list.files(data_folder, pattern = "^\\d{4}-\\d{2}-\\d{2}-visa-data\\.xlsx$", full.names = TRUE)
+if (length(files) == 0) stop("No visa data files found.")
+
+# Extract the date from the start of the filename
+dates <- as.Date(substr(basename(files), 1, 10), format = "%Y-%m-%d")
+latest_file <- files[which.max(dates)]
+
+filepath <- latest_file
 
 list(
   tar_target(data_list,
