@@ -8,7 +8,7 @@ library(lubridate)
 library(ggplot2)
 library(tidyr)
 library(stringr)
-
+library(writexl)
 
 #------------------------
 #### GRAPHS AND CHARTS
@@ -41,9 +41,29 @@ prepare_stacked_chart_data <- function(aggregate_data, keyword) {
 }
 
 # Function to create stacked bar charts
-generate_stacked_charts <- function(aggregate_data) {
+generate_stacked_charts <- function(aggregate_data, output_path = ouput_folder) {
   apps_data <- prepare_stacked_chart_data(aggregate_data, "Apps")
   grants_data <- prepare_stacked_chart_data(aggregate_data, "Grants")
+
+  #write apps csv
+  file_name_apps <- "apps_data"
+  full_path <- file.path(output_folder, paste0(file_name_apps, ".xlsx"))
+
+  if (!dir.exists(output_folder)) {
+    dir.create(output_folder, recursive = TRUE)
+  }
+
+  write_xlsx(apps_data, path = full_path)
+
+  #write grants csv
+  file_name_grants <- "grants_data"
+  full_path <- file.path(output_folder, paste0(file_name_grants, ".xlsx"))
+
+  if (!dir.exists(output_folder)) {
+    dir.create(output_folder, recursive = TRUE)
+  }
+
+  write_xlsx(grants_data, path = full_path)
 
   # Step 1: Create new fill column
   apps_data <- apps_data %>%

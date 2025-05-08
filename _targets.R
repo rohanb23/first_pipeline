@@ -19,6 +19,11 @@ latest_file <- files[which.max(dates)]
 
 filepath <- latest_file
 
+output_folder <- file.path(
+  "C:/Users", username,
+  "OneDrive - Department of Health and Social Care/Git/first_pipeline"                                                    #Change this line
+)
+
 list(
   tar_target(data_list,
              read_my_data(filepath)), #reads in weekly data
@@ -33,5 +38,5 @@ list(
              calculate_summary_trends(summary_values)),  #summary trends across all occupations which include, for example, most recent percentage increase
 
   tar_target(stacked_charts,
-             generate_stacked_charts(aggregate_data)) # Generate the stacked plots previously produced for the MI data reports from the list of aggregated data
+             generate_stacked_charts(aggregate_data,output_folder)) # Generate the stacked plots previously produced for the MI data reports from the list of aggregated data
 )
